@@ -9,7 +9,6 @@ import {
   carsMockWithId,
   carsMockForUpdate,
   carsMockWithIdUpdated,
-	carsMockForUpdateWrong,
 } from '../../mocks/carsMock';
 
 
