@@ -4,44 +4,42 @@ import { IModel } from '../interfaces/IModel';
 import { ErrorTypes } from '../errors/catalog';
 
 class CarService implements IService<ICar> {
-  private _frame:IModel<ICar>;
+  private _car:IModel<ICar>;
 
   constructor(model:IModel<ICar>) {
-    this._frame = model;
+    this._car = model;
   }
 
   public async create(obj:unknown):Promise<ICar> {
     const parsed = CarZodSchema.safeParse(obj);
-    if (!parsed.success) {
-      throw parsed.error;
-    }
-    return this._frame.create(parsed.data);
+    if (!parsed.success) throw parsed.error;
+    return this._car.create(parsed.data);
   }
 
   public async read():Promise<ICar[]> {
-    const frames = await this._frame.read();
-    if (!frames) throw new Error(ErrorTypes.EntityNotFound);
-    return frames;
+    const cars = await this._car.read();
+    if (!cars) throw new Error(ErrorTypes.EntityNotFound);
+    return cars;
   }
 
   public async readOne(_id:string):Promise<ICar> {
-    const frame = await this._frame.readOne(_id);
-    if (!frame) throw new Error(ErrorTypes.EntityNotFound);
-    return frame;
+    const car = await this._car.readOne(_id);
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
+    return car;
   }
 
   public async update(_id:string, obj: unknown):Promise<ICar> {
     const parsed = CarZodSchema.safeParse(obj);
     if (!parsed.success) throw parsed.error;    
-    const frameUpdate = await this._frame.update(_id, parsed.data);
-    if (!frameUpdate) throw new Error(ErrorTypes.EntityNotFound);
-    return frameUpdate;
+    const carUpdate = await this._car.update(_id, parsed.data);
+    if (!carUpdate) throw new Error(ErrorTypes.EntityNotFound);
+    return carUpdate;
   }
 
   public async delete(_id:string):Promise<ICar> {
-    const frame = await this._frame.delete(_id);
-    if (!frame) throw new Error(ErrorTypes.EntityNotFound);
-    return frame;
+    const car = await this._car.delete(_id);
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
+    return car;
   }
 }
 
