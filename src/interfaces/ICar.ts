@@ -2,24 +2,20 @@ import { z } from 'zod';
 import { VehicleZodSchema } from './IVehicle';
 
 export const CarZodSchema = VehicleZodSchema.extend({
-  doorsQty: z
-    .number({
-      required_error: 'DoorQty is required',
-      invalid_type_error: 'DoorQty must be a number',
-    })
-    .int({ message: 'Must be a integer' })
-    .positive({ message: 'Must be a positive number' })
-    .lte(4, { message: 'DoorQty must be less than 4' })
-    .gte(2, { message: 'DoorQty must be greater than 2' }),
-  seatsQty: z
-    .number({
-      required_error: 'SeatQty is required',
-      invalid_type_error: 'SeatQty must be a number',
-    })
-    .int({ message: 'Must be a integer' })
-    .positive({ message: 'Must be a positive number' })
-    .lte(7, { message: 'SeatQty must be less than 7' })
-    .gte(2, { message: 'SeatQty must be greater than 2' }),
+  doorsQty: z.number({
+    required_error: 'doorsQty is required',
+    invalid_type_error: 'doorsQty must be a number',
+  }).int({ message: 'Must be a integer' })
+    .positive({ message: 'Must be a positiver number' })
+    .lte(4, { message: 'doorsQty must be less than 4' })
+    .gte(2, { message: 'doorsQty must be greater than 2' }),
+  seatsQty: z.number({
+    required_error: 'seatsQty is required',
+    invalid_type_error: 'seatsQty must be a number',
+  }).int({ message: 'Must be a integer' })
+    .positive({ message: 'Must be a positiver number' })
+    .lte(7, { message: 'seatsQty must be less than 7' })
+    .gte(2, { message: 'seatsQty must be greater than 2' }),
 });
 
 export type ICar = z.infer<typeof CarZodSchema>;

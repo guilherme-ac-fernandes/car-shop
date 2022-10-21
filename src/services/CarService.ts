@@ -12,7 +12,9 @@ class CarService implements IService<ICar> {
 
   public async create(obj:unknown):Promise<ICar> {
     const parsed = CarZodSchema.safeParse(obj);
-    if (!parsed.success) throw parsed.error;
+    if (!parsed.success) {
+      throw parsed.error;
+    }
     return this._frame.create(parsed.data);
   }
 
