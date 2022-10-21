@@ -1,6 +1,6 @@
 import { isValidObjectId, Model, UpdateQuery } from 'mongoose';
 import { ErrorTypes } from '../errors/catalog';
-import IModel from '../interfaces/IModel';
+import { IModel } from '../interfaces/IModel';
 
 abstract class MongoModel<T> implements IModel<T> {
   protected _model:Model<T>;
@@ -13,7 +13,7 @@ abstract class MongoModel<T> implements IModel<T> {
     return this._model.create({ ...obj });
   }
 
-  public async read():Promise<T[] | null> {
+  public async read():Promise<T[]> {
     return this._model.find();
   }
 
