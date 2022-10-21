@@ -10,7 +10,7 @@ const MotorcycleZodSchema = VehicleZodSchema.extend({
     })
     .int({ message: 'Must be a integer' })
     .positive({ message: 'Must be a positiver number' })
-    .lte(2500, { message: 'engineCapacity must be less or equal to 2500' })
+    .lte(2500, { message: 'engineCapacity must be less or equal to 2500' }),
 });
 
  type IMotorcycle = z.infer<typeof MotorcycleZodSchema>;
