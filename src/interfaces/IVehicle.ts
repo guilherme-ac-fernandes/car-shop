@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+// Utilizando de outras verificações usando o Zod
+// source: https://github.com/colinhacks/zod#numbers
 const VehicleZodSchema = z.object({
   model: z
     .string({
