@@ -1,7 +1,7 @@
 import { IMotorcycle } from '../../interfaces/IMotorcycle';
 
 const motorcycleMock: IMotorcycle = {
-  model: 'Palio',
+  model: 'Honda',
   year: 2011,
   color: 'Preto',
   status: true,
@@ -12,7 +12,7 @@ const motorcycleMock: IMotorcycle = {
 
 const motorcycleMockWithId: IMotorcycle & { _id: string } = {
   _id: '62cf1fc6498565d94eba52cd',
-  model: 'Palio',
+  model: 'Honda',
   year: 2011,
   color: 'Preto',
   status: true,
@@ -22,7 +22,7 @@ const motorcycleMockWithId: IMotorcycle & { _id: string } = {
 };
 
 const motorcycleMockForUpdate: IMotorcycle = {
-  model: 'Palio',
+  model: 'Honda',
   year: 2011,
   color: 'Preto',
   status: true,
@@ -32,7 +32,7 @@ const motorcycleMockForUpdate: IMotorcycle = {
 };
 
 const motorcycleMockForUpdateWrong: unknown = {
-  model: 'Palio',
+  model: 'Honda',
   year: '2011',
   color: 'Preto',
   status: true,
@@ -43,7 +43,7 @@ const motorcycleMockForUpdateWrong: unknown = {
 
 const motorcycleMockWithIdUpdated: IMotorcycle & { _id: string } = {
   _id: '62cf1fc6498565d94eba52cd',
-  model: 'Palio',
+  model: 'Honda',
   year: 2011,
   color: 'Preto',
   status: true,
