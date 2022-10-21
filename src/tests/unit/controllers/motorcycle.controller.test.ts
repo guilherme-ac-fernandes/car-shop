@@ -11,13 +11,12 @@ import {
   motorcycleMockWithIdUpdated,
 } from '../../mocks/motorcycleMock';
 
-
 describe('Motorcycle Controller', () => {
-  const motorcycleModel = new MotorcycleModel()
+  const motorcycleModel = new MotorcycleModel();
   const motorcycleService = new MotorcycleService(motorcycleModel);
   const motorcycleController = new MotorcycleController(motorcycleService);
-  
-  const req = {} as Request; 
+
+  const req = {} as Request;
   const res = {} as Response;
 
   before(() => {
@@ -25,7 +24,9 @@ describe('Motorcycle Controller', () => {
     sinon.stub(motorcycleService, 'readOne').resolves(motorcycleMockWithId);
     sinon.stub(motorcycleService, 'read').resolves([motorcycleMockWithId]);
     sinon.stub(motorcycleService, 'delete').resolves(motorcycleMockWithId);
-    sinon.stub(motorcycleService, 'update').resolves(motorcycleMockWithIdUpdated);
+    sinon
+      .stub(motorcycleService, 'update')
+      .resolves(motorcycleMockWithIdUpdated);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -38,7 +39,8 @@ describe('Motorcycle Controller', () => {
       req.body = motorcycleMock;
       await motorcycleController.create(req, res);
       expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to
+        .be.true;
     });
   });
 
@@ -48,16 +50,18 @@ describe('Motorcycle Controller', () => {
       await motorcycleController.readOne(req, res);
 
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to
+        .be.true;
     });
   });
 
   describe('Read Motorcycles', () => {
     it('Success', async () => {
       await motorcycleController.read(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith([motorcycleMockWithId])).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith([motorcycleMockWithId]))
+        .to.be.true;
     });
   });
 
@@ -65,9 +69,10 @@ describe('Motorcycle Controller', () => {
     it('Success', async () => {
       req.params = { id: motorcycleMockWithId._id };
       await motorcycleController.delete(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithId)).to
+        .be.true;
     });
   });
 
@@ -76,9 +81,11 @@ describe('Motorcycle Controller', () => {
       req.params = { id: motorcycleMockWithId._id };
       req.body = { ...motorcycleMockForUpdate };
       await motorcycleController.update(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(motorcycleMockWithIdUpdated)).to.be.true;
+      expect(
+        (res.json as sinon.SinonStub).calledWith(motorcycleMockWithIdUpdated)
+      ).to.be.true;
     });
   });
 });

@@ -13,6 +13,6 @@ const MotorcycleZodSchema = VehicleZodSchema.extend({
     .lte(2500, { message: 'engineCapacity must be less or equal to 2500' }),
 });
 
- type IMotorcycle = z.infer<typeof MotorcycleZodSchema>;
+type IMotorcycle = z.infer<typeof MotorcycleZodSchema>;
 
 export { MotorcycleZodSchema, IMotorcycle };

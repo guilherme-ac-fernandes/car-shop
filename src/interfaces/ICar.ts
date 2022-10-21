@@ -22,6 +22,6 @@ const CarZodSchema = VehicleZodSchema.extend({
     .gte(2, { message: 'seatsQty must be greater than 2' }),
 });
 
- type ICar = z.infer<typeof CarZodSchema>;
+type ICar = z.infer<typeof CarZodSchema>;
 
 export { CarZodSchema, ICar };

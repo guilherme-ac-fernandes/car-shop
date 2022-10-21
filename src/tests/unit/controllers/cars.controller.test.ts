@@ -11,13 +11,12 @@ import {
   carsMockWithIdUpdated,
 } from '../../mocks/carsMock';
 
-
 describe('Car Controller', () => {
-  const carModel = new CarsModel()
+  const carModel = new CarsModel();
   const carService = new CarsService(carModel);
   const carController = new CarsController(carService);
-  
-  const req = {} as Request; 
+
+  const req = {} as Request;
   const res = {} as Response;
 
   before(() => {
@@ -38,7 +37,8 @@ describe('Car Controller', () => {
       req.body = carsMock;
       await carController.create(req, res);
       expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be
+        .true;
     });
   });
 
@@ -48,16 +48,18 @@ describe('Car Controller', () => {
       await carController.readOne(req, res);
 
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be
+        .true;
     });
   });
 
   describe('Read Cars', () => {
     it('Success', async () => {
       await carController.read(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith([carsMockWithId])).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith([carsMockWithId])).to.be
+        .true;
     });
   });
 
@@ -65,9 +67,10 @@ describe('Car Controller', () => {
     it('Success', async () => {
       req.params = { id: carsMockWithId._id };
       await carController.delete(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carsMockWithId)).to.be
+        .true;
     });
   });
 
@@ -76,9 +79,10 @@ describe('Car Controller', () => {
       req.params = { id: carsMockWithId._id };
       req.body = { ...carsMockForUpdate };
       await carController.update(req, res);
-      
+
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carsMockWithIdUpdated)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carsMockWithIdUpdated)).to
+        .be.true;
     });
   });
 });

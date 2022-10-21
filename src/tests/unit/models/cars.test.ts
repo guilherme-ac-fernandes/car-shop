@@ -29,7 +29,7 @@ describe('Car Model', () => {
       expect(newCar).to.be.deep.equal(carsMockWithId);
     });
   });
-    
+
   describe('searching a car', () => {
     it('successfully found', async () => {
       const carFound = await carsModel.readOne('62cf1fc6498565d94eba52cd');
@@ -69,7 +69,10 @@ describe('Car Model', () => {
 
   describe('updating a car', () => {
     it('successfully update', async () => {
-      const carUpdate = await carsModel.update('62cf1fc6498565d94eba52cd', carsMockForUpdate);
+      const carUpdate = await carsModel.update(
+        '62cf1fc6498565d94eba52cd',
+        carsMockForUpdate
+      );
       expect(carUpdate).to.be.deep.equal(carsMockWithIdUpdated);
     });
 

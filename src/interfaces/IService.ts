@@ -1,7 +1,7 @@
 export interface IService<T> {
-  create(obj:unknown): Promise<T>,
-  read(): Promise<T[]>,
-  readOne(_id:string): Promise<T>,
-  update(__id:string, obj: unknown): Promise<T>,
-  delete(_id:string): Promise<T>,
+  create(obj: unknown): Promise<T>;
+  read(): Promise<T[]>;
+  readOne(_id: string): Promise<T>;
+  update(__id: string, obj: unknown): Promise<T>;
+  delete(_id: string): Promise<T>;
 }

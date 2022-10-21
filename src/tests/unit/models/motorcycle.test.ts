@@ -18,7 +18,9 @@ describe('Motorcycle Model', () => {
     sinon.stub(Model, 'findOne').resolves(motorcycleMockWithId);
     sinon.stub(Model, 'find').resolves([motorcycleMockWithId]);
     sinon.stub(Model, 'findByIdAndDelete').resolves(motorcycleMockWithId);
-    sinon.stub(Model, 'findByIdAndUpdate').resolves(motorcycleMockWithIdUpdated);
+    sinon
+      .stub(Model, 'findByIdAndUpdate')
+      .resolves(motorcycleMockWithIdUpdated);
   });
 
   after(() => sinon.restore());
@@ -29,10 +31,12 @@ describe('Motorcycle Model', () => {
       expect(newMotorcycle).to.be.deep.equal(motorcycleMockWithId);
     });
   });
-    
+
   describe('searching a motorcycle', () => {
     it('successfully found', async () => {
-      const motorcycleFound = await motorcycleModel.readOne('62cf1fc6498565d94eba52cd');
+      const motorcycleFound = await motorcycleModel.readOne(
+        '62cf1fc6498565d94eba52cd'
+      );
       expect(motorcycleFound).to.be.deep.equal(motorcycleMockWithId);
     });
 
@@ -54,7 +58,9 @@ describe('Motorcycle Model', () => {
 
   describe('deleteting a motorcycle', () => {
     it('successfully delete', async () => {
-      const motorcycleDelete = await motorcycleModel.delete('62cf1fc6498565d94eba52cd');
+      const motorcycleDelete = await motorcycleModel.delete(
+        '62cf1fc6498565d94eba52cd'
+      );
       expect(motorcycleDelete).to.be.deep.equal(motorcycleMockWithId);
     });
 
@@ -69,7 +75,10 @@ describe('Motorcycle Model', () => {
 
   describe('updating a motorcycle', () => {
     it('successfully update', async () => {
-      const motorcycleUpdate = await motorcycleModel.update('62cf1fc6498565d94eba52cd', motorcycleMockForUpdate);
+      const motorcycleUpdate = await motorcycleModel.update(
+        '62cf1fc6498565d94eba52cd',
+        motorcycleMockForUpdate
+      );
       expect(motorcycleUpdate).to.be.deep.equal(motorcycleMockWithIdUpdated);
     });
 

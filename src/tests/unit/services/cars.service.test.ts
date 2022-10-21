@@ -9,118 +9,129 @@ import {
   carsMockWithId,
   carsMockForUpdate,
   carsMockWithIdUpdated,
-	carsMockForUpdateWrong,
+  carsMockForUpdateWrong,
 } from '../../mocks/carsMock';
 
 describe('Car Service', () => {
-	const carModel = new CarModel();
-	const carService = new CarService(carModel);
+  const carModel = new CarModel();
+  const carService = new CarService(carModel);
 
-	before(() => {
-		sinon.stub(carModel, 'create').resolves(carsMockWithId);
-		sinon.stub(carModel, 'readOne')
-			.onCall(0).resolves(carsMockWithId) 
-			.onCall(1).resolves(null);
-		sinon.stub(carModel, 'read').resolves([carsMockWithId]);
-		sinon.stub(carModel, 'delete')
-			.onCall(0).resolves(carsMockWithId) 
-			.onCall(1).resolves(null);
-		sinon.stub(carModel, 'update')
-			.onCall(0).resolves(carsMockWithIdUpdated)
-			.onCall(1).resolves(null) 
-			.onCall(2).resolves(null);
-	});
+  before(() => {
+    sinon.stub(carModel, 'create').resolves(carsMockWithId);
+    sinon
+      .stub(carModel, 'readOne')
+      .onCall(0)
+      .resolves(carsMockWithId)
+      .onCall(1)
+      .resolves(null);
+    sinon.stub(carModel, 'read').resolves([carsMockWithId]);
+    sinon
+      .stub(carModel, 'delete')
+      .onCall(0)
+      .resolves(carsMockWithId)
+      .onCall(1)
+      .resolves(null);
+    sinon
+      .stub(carModel, 'update')
+      .onCall(0)
+      .resolves(carsMockWithIdUpdated)
+      .onCall(1)
+      .resolves(null)
+      .onCall(2)
+      .resolves(null);
+  });
 
-	after(() => sinon.restore());
+  after(() => sinon.restore());
 
-	describe('Create Car', () => {
-		it('Success', async () => {
-			const carCreated = await carService.create(carsMock);
-			expect(carCreated).to.be.deep.equal(carsMockWithId);
-		});
+  describe('Create Car', () => {
+    it('Success', async () => {
+      const carCreated = await carService.create(carsMock);
+      expect(carCreated).to.be.deep.equal(carsMockWithId);
+    });
 
-		it('Failure', async () => {
-			let error;
-			try {
-				await carService.create({});
-			} catch (err) {
-				error = err
-			}
-			expect(error).to.be.instanceOf(ZodError);
-		});
-	});
-
-	describe('ReadOne Car', () => {
-		it('Success', async () => {
-			const carCreated = await carService.readOne(carsMockWithId._id);
-			expect(carCreated).to.be.deep.equal(carsMockWithId);
-		});
-
-		it('Failure', async () => {
+    it('Failure', async () => {
       let error;
-			try {
-				await carService.readOne(carsMockWithId._id);
-			} catch (err:any) {
-				error = err
-			}
-			expect(error, 'error should be defined').not.to.be.undefined;
-			expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
-		});
-	});
+      try {
+        await carService.create({});
+      } catch (err) {
+        error = err;
+      }
+      expect(error).to.be.instanceOf(ZodError);
+    });
+  });
 
-	describe('Read Cars', () => {
-		it('Success', async () => {
-			const carsArray = await carService.read();
-			expect(carsArray).to.be.deep.equal([carsMockWithId]);
-		});
-	});
+  describe('ReadOne Car', () => {
+    it('Success', async () => {
+      const carCreated = await carService.readOne(carsMockWithId._id);
+      expect(carCreated).to.be.deep.equal(carsMockWithId);
+    });
 
-	describe('Delete Car', () => {
-		it('Success', async () => {
-			const carDelete = await carService.delete(carsMockWithId._id);
-			expect(carDelete).to.be.deep.equal(carsMockWithId);
-		});
-
-		it('Failure', async () => {
+    it('Failure', async () => {
       let error;
-			try {
-				await carService.delete(carsMockWithId._id);
-			} catch (err:any) {
-				error = err
-			}
-			expect(error, 'error should be defined').not.to.be.undefined;
-			expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
-		});
-	});
+      try {
+        await carService.readOne(carsMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
+    });
+  });
 
-	describe('Update Car', () => {
-		it('Success', async () => {
-			const carArray = await carService.update(carsMockWithId._id, carsMockForUpdate);
-			expect(carArray).to.be.deep.equal(carsMockWithIdUpdated);
-		});
+  describe('Read Cars', () => {
+    it('Success', async () => {
+      const carsArray = await carService.read();
+      expect(carsArray).to.be.deep.equal([carsMockWithId]);
+    });
+  });
 
-		it('Failure: id invalid', async () => {
+  describe('Delete Car', () => {
+    it('Success', async () => {
+      const carDelete = await carService.delete(carsMockWithId._id);
+      expect(carDelete).to.be.deep.equal(carsMockWithId);
+    });
+
+    it('Failure', async () => {
       let error;
-			try {
-				await carService.update('123ERRADO', carsMockForUpdate);
-			} catch (err:any) {
-				error = err
-			}
-			
-			expect(error.message).to.be.equal(ErrorTypes.EntityNotFound);
-		});
+      try {
+        await carService.delete(carsMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
+    });
+  });
 
-		it('Failure: car invalid', async () => {
+  describe('Update Car', () => {
+    it('Success', async () => {
+      const carArray = await carService.update(
+        carsMockWithId._id,
+        carsMockForUpdate
+      );
+      expect(carArray).to.be.deep.equal(carsMockWithIdUpdated);
+    });
+
+    it('Failure: id invalid', async () => {
       let error;
-			try {
-				await carService.update(carsMockWithId._id, carsMockForUpdateWrong);
-			} catch (err:any) {
-				error = err
-			}
-		
-			expect(error).to.be.instanceOf(ZodError);
-		});
+      try {
+        await carService.update('123ERRADO', carsMockForUpdate);
+      } catch (err: any) {
+        error = err;
+      }
 
-		
-	});
+      expect(error.message).to.be.equal(ErrorTypes.EntityNotFound);
+    });
+
+    it('Failure: car invalid', async () => {
+      let error;
+      try {
+        await carService.update(carsMockWithId._id, carsMockForUpdateWrong);
+      } catch (err: any) {
+        error = err;
+      }
+
+      expect(error).to.be.instanceOf(ZodError);
+    });
+  });
 });
