@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // Utilizando de outras verificações usando o Zod
 // source: https://github.com/colinhacks/zod#numbers
-const VehicleZodSchema = z.object({
+export const VehicleZodSchema = z.object({
   model: z
     .string({
       required_error: 'Model is required',
@@ -37,7 +37,4 @@ const VehicleZodSchema = z.object({
     .int({ message: 'Must be a integer' }),
 });
 
-type IVehicle = z.infer<typeof VehicleZodSchema>;
-
-export { IVehicle, VehicleZodSchema };
-export default IVehicle;
+export type IVehicle = z.infer<typeof VehicleZodSchema>;
