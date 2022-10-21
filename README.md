@@ -1,6 +1,6 @@
 # Projeto Car Shop 🚘🚔🚖
 
-Consiste em uma API para gerenciar uma concessionária de veículos. 
+Consiste em uma API para gerenciar de uma concessionária de veículos. 
 
 * Construída com Node.js, Express, Typescript, MongoDB, Docker e Zod
 * Utilizando os princípios SOLID e Programação Orientada a Objetos
@@ -55,11 +55,11 @@ Nas requisições POST e PUT é necessário informar o seguinte JSON:
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma listagem de todos as motocicletas cadastrados | http://localhost:3001/cars |
-| `GET` | Retorna ums motocicleta específica | http://localhost:3001/cars/:id |
-| `POST` | Realiza o cadastro de uma motocicleta | http://localhost:3001/cars |
-| `PUT` | Atualiza os campos de uma motocicleta específica | http://localhost:3001/cars/:id |
-| `DELETE` | Apaga os dados de uma motocicleta específica | http://localhost:3001/cars/:id |
+| `GET` | Retorna uma listagem de todos as motocicletas cadastrados | http://localhost:3001/motorcycles |
+| `GET` | Retorna uma motocicleta específica | http://localhost:3001/motorcycles/:id |
+| `POST` | Realiza o cadastro de uma motocicleta | http://localhost:3001/motorcycles |
+| `PUT` | Atualiza os campos de uma motocicleta específica | http://localhost:3001/motorcycles/:id |
+| `DELETE` | Apaga os dados de uma motocicleta específica | http://localhost:3001/motorcycles/:id |
 
 Nas requisições POST e PUT é necessário informar o seguinte JSON:
 
