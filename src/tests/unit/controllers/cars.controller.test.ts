@@ -13,7 +13,7 @@ import {
 } from '../../mocks/carsMock';
 
 
-describe('Frame Controller', () => {
+describe('Car Controller', () => {
   const carModel = new CarsModel()
   const carService = new CarsService(carModel);
   const carController = new CarsController(carService);
@@ -62,7 +62,7 @@ describe('Frame Controller', () => {
     });
   });
 
-  describe('Delete Frame', () => {
+  describe('Delete Car', () => {
     it('Success', async () => {
       req.params = { id: carsMockWithId._id };
       await carController.delete(req, res);
@@ -72,7 +72,7 @@ describe('Frame Controller', () => {
     });
   });
 
-  describe('Update Frame', () => {
+  describe('Update Car', () => {
     it('Success', async () => {
       req.params = { id: carsMockWithId._id };
       req.body = { ...carsMockForUpdate };

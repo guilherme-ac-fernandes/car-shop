@@ -12,7 +12,7 @@ import {
 	carsMockForUpdateWrong,
 } from '../../mocks/carsMock';
 
-describe('Frame Service', () => {
+describe('Car Service', () => {
 	const carModel = new CarModel();
 	const carService = new CarService(carModel);
 
@@ -95,8 +95,8 @@ describe('Frame Service', () => {
 
 	describe('Update Car', () => {
 		it('Success', async () => {
-			const frameArray = await carService.update(carsMockWithId._id, carsMockForUpdate);
-			expect(frameArray).to.be.deep.equal(carsMockWithIdUpdated);
+			const carArray = await carService.update(carsMockWithId._id, carsMockForUpdate);
+			expect(carArray).to.be.deep.equal(carsMockWithIdUpdated);
 		});
 
 		it('Failure: id invalid', async () => {

@@ -10,7 +10,7 @@ import {
 } from '../../mocks/carsMock';
 import { ErrorTypes } from '../../../errors/catalog';
 
-describe('Frame Model', () => {
+describe('Car Model', () => {
   const carsModel = new CarModel();
 
   before(() => {
