@@ -41,13 +41,13 @@ Nas requisições POST e PUT é necessário informar o seguinte JSON:
 
 ```
 {
-  "model": "Palio",
-  "year": 2011,
-  "color": "Preto",
-  "status": true, // campo opcional
-  "buyValue": 1000,
-  "doorsQty": 4,
-  "seatsQty": 5
+  "model": "Palio", // deve ser uma string com, pelo menos, 3 caracteres
+  "year": 2011, // deve ser um valor inteiro positivo entre 1900 e 2022
+  "color": "Preto", // deve ser uma string com, pelo menos, 3 caracteres
+  "status": true, // deve receber valores booleanos e pode ser opcional
+  "buyValue": 1000, //  deve receber apenas números inteiros
+  "doorsQty": 4, // deve ser um valor inteiro positivo entre 2 e 4
+  "seatsQty": 5 // deve ser um valor inteiro positivo entre 2 e 7 
 }
 ```
 
@@ -65,12 +65,12 @@ Nas requisições POST e PUT é necessário informar o seguinte JSON:
 
 ```
 {
-  "model": "Honda",
-  "year": 2011,
-  "color": "Preto",
-  "status": true, // campo opcional
-  "buyValue": 1000,
-  "category": "Street",
-  "engineCapacity": 2000,
+  "model": "Honda", // deve ser uma string com, pelo menos, 3 caracteres
+  "year": 2011, // deve ser um valor inteiro positivo entre 1900 e 2022
+  "color": "Preto", // deve ser uma string com, pelo menos, 3 caracteres
+  "status": true, // deve receber valores booleanos e pode ser opcional
+  "buyValue": 1000, //  deve receber apenas números inteiros
+  "category": "Street", // deve poder ser apenas Street, Custom ou Trail
+  "engineCapacity": 2000, // deve ser um valor inteiro positivo menor ou igual a 2500
 }
 ```
